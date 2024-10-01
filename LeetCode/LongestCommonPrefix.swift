@@ -39,6 +39,7 @@ class Solution {
 
 
 
+
 class Solution {
     func longestCommonPrefix(_ strs: [String]) -> String {
         // 如果字符串数组为空，直接返回空字符串
@@ -64,3 +65,62 @@ class Solution {
 // 与第一个 class 相比取消了 var commonPrefix = ""
 
 
+
+
+
+
+class Solution {
+    func longestCommonPrefix(_ strs: [String]) -> String {
+        guard let firstStr = strs.first else {
+            return ""
+        }
+
+        var prefix = firstStr
+        for str in strs {
+            while !str.hasPrefix(prefix) {
+            // 用 hasPrefix 方法检查当前字符串是否有公共前缀  prefix  
+                prefix = String(prefix.dropLast)
+                // 用 String(prefix.dropLast) 删除最后一个字符串
+                if prefix.isEmpty {
+                    return ""
+                }
+            }
+        }
+        return prefix 
+    }
+}
+
+
+
+
+class Solution {
+    func longestCommonPrefix(_ strs: [String]) -> String {
+        guard let firstStr = strs.first else {
+            return ""
+        }
+
+        var low = 0  // 前缀最短长度
+        var high = firstStr.count //前缀最大长度
+
+        while low <= high {
+            let mid = (left + right) / 2
+
+            let prefix = String(firstStr.prefix(mid))
+            // 获取 firstStr 的前缀，长度时 mid
+
+            if strs.allSatisfy({ $0.hasPrefix(prefix)}) {   
+                low = mid + 1
+            } else {
+                high = mid - 1
+            }
+        }
+        
+        return String(firstStr.prefix((low + high) / 2))
+        // prefix 返回的值实际上是 Substring 类型（即子字符串）
+        // 所以通过 String(...) 将其转换为 String 类型
+    }
+}
+// 二分查找
+// array.allSatisfy { condition } 检查数组是否满足给定条件 boolean
+// {$0.hasPrefix(prefix)} 闭包（closure）
+// $0 是闭包的第一个参数的简写，在这里 $0 代表数组中的每一个元素（即字符串 str）
