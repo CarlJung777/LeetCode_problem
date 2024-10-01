@@ -124,3 +124,7 @@ class Solution {
 // array.allSatisfy { condition } 检查数组是否满足给定条件 boolean
 // {$0.hasPrefix(prefix)} 闭包（closure）
 // $0 是闭包的第一个参数的简写，在这里 $0 代表数组中的每一个元素（即字符串 str）
+
+// Substring 不会拷贝原始字符串的数据，而是直接引用原始字符串的内存
+// 需要长期保留一个 Substring 时，通常会把它转化为 String
+// 因为字符串是引用计数的，而子字符串的生命周期通常和原始字符串一致
