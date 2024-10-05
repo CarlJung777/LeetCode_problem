@@ -1,3 +1,4 @@
+// BFS
 class Solution {
     func updateMatrix(_ mat: [[Int]]) -> [[Int]] {
         let m = mat.count
@@ -36,4 +37,49 @@ class Solution {
 
         return result
     }
+}
+
+
+
+// DP
+class Solution {
+    func updateMatrix(_ mat: [[Int]]) -> [[Int]] {
+        let m = mat.count // 矩阵行数 column
+        let n = mat[0].count // 矩阵列数 row
+        // 初始时所有的值都设置为 Int.max - 10000 ， 避免溢出
+        var result = Array(repeating: Array(repeating: Int.max - 10000, count: n), count: m)
+        
+        // 第一遍：从左上到右下
+        // 第一遍遍历时每个单元格只能参考其上方和左方邻居的距离
+        for i in 0..<m {
+            for j in 0..<n {
+                if mat[i][j] == 0 {
+                    result[i][j] = 0
+                } else {
+                    if i > 0 {
+                        result[i][j] = min(result[i][j], result[i - 1][j] + 1)
+                    }
+                    if j > 0 {
+                        result[i][j] = min(result[i][j], result[i][j - 1] + 1)
+                    }
+                }
+            }
+        }
+        
+        // 第二遍：从右下到左上
+        // 这一遍遍历的重点是通过下方和右方的邻居来更新距离
+        for i in (0..<m).reversed() {
+            for j in (0..<n).reversed() {
+                if i < m - 1 {
+                    result[i][j] = min(result[i][j], result[i + 1][j] + 1)
+                }
+                if j < n - 1 {
+                    result[i][j] = min(result[i][j], result[i][j + 1] + 1)
+                }
+            }
+        }
+        
+        return result
+    }
+
 }
