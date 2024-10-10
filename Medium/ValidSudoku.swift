@@ -2,6 +2,7 @@ class Solution {
     func isValidSudoku(_ board: [[Character]]) -> Bool {
 
         // 棋盘的每个元素是数字或者点，所以这里用 Set<Character>()
+        // 九行 九列 九个Box
         var rows = Array(repeating: Set<Character>(), count: 9)
         var cols = Array(repeating: Set<Character>(), count: 9)
         var boxes = Array(repeating: Set<Character>(), count: 9)
@@ -19,6 +20,11 @@ class Solution {
                     continue
                 }
                 
+                // i / 3   每个子方块包含 3 行，用 i 除以 3 得到该行所在的子方块的行索引
+                // j / 3   确定当前列 j 位于哪个 3x3 子方块中
+                // 通过 (i / 3) * 3 计算得到的是当前子方块在整个 9x9 棋盘中垂直位置（行）对应的索引
+                // 然后通过 + (j / 3) 计算出在该子方块中具体的子方块索引
+                // 最终，这个公式将会得到一个范围在 0 到 8 之间的索引，表示在 9 个子方块中的位置
                 let boxIndex = (i / 3) * 3 + j / 3
                 
                 // 检查当前行、列和 3x3 小格子中是否有重复的数字
