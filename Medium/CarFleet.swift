@@ -1,3 +1,5 @@
+// stack    monotonic stack     sorting    array
+
 func carFleet(_ target: Int, _ position: [Int], _ speed: [Int]) -> Int {
     let n = position.count
     // 将车的位置和速度结合为元组，并按位置从远到近排序
@@ -39,3 +41,5 @@ func carFleet(_ target: Int, _ position: [Int], _ speed: [Int]) -> Int {
     
     return fleets
 }
+
+
