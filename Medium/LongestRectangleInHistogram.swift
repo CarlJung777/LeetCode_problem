@@ -3,7 +3,7 @@
 func largestRectangleArea(_ heights: [Int]) -> Int {
     var maxArea = 0
     var stack: [Int] = []  // 用于存储索引
-    var heights = heights + [0]  // 在数组末尾添加一个 0，以便处理完栈中所有元素
+    let heights = heights + [0]  // 在数组末尾添加一个 0，以便处理完栈中所有元素
 
     for i in 0..<heights.count {
         // 如果当前高度小于栈顶所指高度，开始计算面积
@@ -21,7 +21,7 @@ func largestRectangleArea(_ heights: [Int]) -> Int {
 
 
 
-func largestRectangleArea(_ heights: [Int]) -> Int {
+func LULULULUlargestRectangleArea(_ heights: [Int]) -> Int {
     var stack: [Int] = []
     var maxArea = 0
     let n = heights.count
