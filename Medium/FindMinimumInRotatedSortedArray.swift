@@ -1,3 +1,5 @@
+//  array      binary search   
+   
     func findMin(_ nums: [Int]) -> Int {
         var left = 0
         var right = nums.count - 1
