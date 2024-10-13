@@ -1,32 +1,27 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     public var val: Int
- *     public var next: ListNode?
- *     public init(_ val: Int) {
- *         self.val = val
- *         self.next = nil
- *     }
- * }
- */
+class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init() { self.val = 0; self.next = nil; }
+    public init(_ val: Int) { self.val = val; self.next = nil; }
+    public init(_ val: Int, _ next: ListNode?) { self.val = val; self.next = next; }
+}
 
 class Solution {
     func hasCycle(_ head: ListNode?) -> Bool {
+        // 定义快慢两个指针
         var slow = head
         var fast = head
         
-        // 使用快慢指针，如果存在环，则快指针最终会追上慢指针
+        // 开始遍历链表
         while fast != nil && fast?.next != nil {
-            slow = slow?.next
-            fast = fast?.next?.next
+            slow = slow?.next              // 慢指针走一步
+            fast = fast?.next?.next         // 快指针走两步
             
-            // 如果快指针追上了慢指针，说明存在环
-            if slow === fast {
+            if slow === fast {              // 如果快指针追上慢指针，说明有环
                 return true
             }
         }
         
-        // 如果快指针到达链表末尾，则说明不存在环
-        return false
+        return false                        // 如果没有追上，说明没有环
     }
 }
