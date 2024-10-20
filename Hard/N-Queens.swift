@@ -8,7 +8,7 @@ class Solution {
     
     // 回溯算法函数
     private func backtrack(_ board: inout [[String]], _ row: Int, _ result: inout [[String]], _ n: Int) {
-        // 如果成功到达最后一行，说明找到了一组解
+        // 如 果成功到达最后一行，说明找到了一组解
         if row == n {
             result.append(board.map { $0.joined() }) // 将二维棋盘转为一维表示形式
             return
