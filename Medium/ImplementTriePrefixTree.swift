@@ -1,3 +1,4 @@
+//   Trie      Hash Table     String     Design
 class TrieNode {
     var children: [TrieNode?]
     var isEnd: Bool
